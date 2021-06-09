@@ -2,16 +2,7 @@
 #include <vector>
 #include <algorithm>
 
-int getIndex(std::vector<float> v, float K)
-{
-    auto it = std::find(v.begin(), v.end(), K);
 
-    // calculating the index
-    // of K
-    int index = it - v.begin();
-
-    return index;
-}
 
 void subsetsUtil(std::vector<float>& A, std::vector<std::vector<std::pair<float, int>> >& res,
                  std::vector<std::pair<float,int>>& subset, int index)
@@ -20,7 +11,7 @@ void subsetsUtil(std::vector<float>& A, std::vector<std::vector<std::pair<float,
     for (int i = index; i < A.size(); i++) {
 
         // include the A[i] in subset.
-        subset.push_back({A[i], index});
+        subset.push_back({A[i], i});
 
         // move onto the next element.
         subsetsUtil(A, res, subset, i + 1);
